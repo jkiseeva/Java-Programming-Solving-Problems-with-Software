@@ -3,7 +3,7 @@ Coursera Duke University's Class
 
 Week 1 Homework: 
 
-This is my version of the Week 1 Homework Assignment from the Coursera Duke University calss. 
+This is my version of the Week 1 Homework Assignment from the Coursera Duke University calss named "Java-Programming-Solving-Problems-with-Software". 
 
 This code fixes the bugs I found in other Git repos posted by other students for the same assignment. Some common bugs I noticed are code whereby the getFileWithLargestPerimeter() returns the wrong output 
 or 
