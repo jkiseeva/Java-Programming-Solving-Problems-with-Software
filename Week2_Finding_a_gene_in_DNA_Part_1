@@ -1,5 +1,103 @@
 
 /**
+/**
+ * Write a description of Part1 here.
+ * 
+ * @author (Janna Kiseeva) 
+ * @version (v1 August 08 2022)
+ */
+
+import edu.duke.*;
+import java.io.*;
+
+public class Part1 {
+    public String findSimpleGene(String dna){
+        //start codon is "ATG"
+        //stop codon is "TAA"
+        String result = "";
+        //starting index begins at ATG    
+        int startIndex = dna.indexOf("ATG");        
+        //if no ATG, then return ""
+        if (startIndex == -1){
+        return "";
+        }
+        // stopIndex begins at TAA + 3 because we want index to end until after the last A in TAA
+        int stopIndex = dna.indexOf("TAA", startIndex+3);        
+        //if no TAA, then return ""
+        if (stopIndex == -1) {
+        return "";
+        }     
+            
+        //result is the substring of everything beginning with startIndex ATG
+        //ending with stopIndex TAA, and +3 so that it stops at the end of the last A in TAA
+        String prelimresult=dna.substring(startIndex, stopIndex+3);
+        
+        int prelimresultlength = prelimresult.length();
+        
+        //if the modulo of resultlength and 3 is 0, then print out the result
+        if (prelimresultlength%3==0) {
+            result=dna.substring(startIndex, stopIndex+3);
+            //System.out.println(result);
+        } 
+        else {
+            result="";
+               }
+                
+        return result;
+    }
+    
+    public void testSimpleGene() {
+        String dna = "ATTRTAA";
+        System.out.println("DNA strand is " + dna);
+        if (findSimpleGene(dna) != null && !findSimpleGene(dna).isEmpty()){
+            System.out.println("Gene is " + findSimpleGene(dna));
+        } 
+        else {
+            System.out.println("OOPS");
+        }
+        
+
+        dna = "ATTTTTTT";
+        System.out.println("DNA strand is " + dna);
+        //gene = findSimpleGene(dna);
+        //System.out.println("Gene is " + gene);
+        if (findSimpleGene(dna) != null && !findSimpleGene(dna).isEmpty()){
+            System.out.println("Gene is " + findSimpleGene(dna));
+        } 
+        else {
+            System.out.println("OOPS");
+        }
+        
+        //dna = "ATCCTATGCTTCGGCTGCTCTAATATGGT";
+        //dna = "ATCCTATGCTTCGGCTGCTCTOATATGGT";
+        dna = "ATGABCTAA";
+        System.out.println("DNA strand is " + dna);
+        //gene = findSimpleGene(dna);
+        //System.out.println("Gene is " + gene);
+        if (findSimpleGene(dna) != null && !findSimpleGene(dna).isEmpty()){
+            System.out.println("Gene is " + findSimpleGene(dna));
+        } 
+        else {
+            System.out.println("OOPS");
+        }
+        
+        dna = "ATGRRTAA";
+        //dna = "ATRTAA";
+        System.out.println("DNA strand is " + dna);
+        //gene = findSimpleGene(dna);
+        //System.out.println("Gene is " + gene);
+        if (findSimpleGene(dna) != null && !findSimpleGene(dna).isEmpty()){
+            System.out.println("Gene is " + findSimpleGene(dna));
+        } 
+        else {
+            System.out.println("OOPS");
+        }
+        
+        
+        }
+
+}
+
  * Write a description of Part1 here.
  * 
  * @author (jkiseeva) 
