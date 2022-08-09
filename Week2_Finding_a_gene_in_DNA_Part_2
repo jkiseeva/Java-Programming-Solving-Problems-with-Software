@@ -1,0 +1,109 @@
+
+/**
+ * Write a description of Part2 here.
+ * This assignment will determine if a DNA strand has a gene in it by using the simplified algorithm from the lesson, but organizing the code in a slightly different way. You will modify the method findSimpleGene to have three parameters, one for the DNA string, one for the start codon and one for the stop codon.
+ * @author (jkiseeva) 
+ * @version (v1 August 09 2022)
+ */
+public class Part2 {
+    
+    public String findSimpleGene(String dna, String startCodon, String stopCodon){
+        //start codon is "ATG"
+        //stop codon is "TAA"
+        String result = "";
+        startCodon = "ATG";
+        stopCodon = "TAA";
+        //starting index begins at ATG    
+        int startIndex = dna.indexOf(startCodon);        
+        //if no ATG, then return ""
+        if (startIndex == -1){
+        return "";
+        }
+                
+        // stopIndex begins at TAA + 3 because we want index to end until after the last A in TAA
+        int stopIndex = dna.indexOf(stopCodon, startIndex+3);        
+        //if no TAA, then return ""
+        if (stopIndex == -1) {
+        return "";
+        }     
+            
+        //result is the substring of everything beginning with startIndex ATG
+        //ending with stopIndex TAA, and +3 so that it stops at the end of the last A in TAA
+        //prelimresult returns any substring that starts with ATG and ends with TAA
+        // even if NOT a multiple of 3
+        String prelimresult=dna.substring(startIndex, stopIndex+3);
+        
+        int prelimresultlength = prelimresult.length();
+        
+        //if the modulo of resultlength and 3 is 0, then print out the result
+        if (prelimresultlength%3==0) {
+            result=dna.substring(startIndex, stopIndex+3);
+            //System.out.println(result);
+        } 
+        else {
+            result="";
+               }
+                
+        return result;
+    }
+    
+  
+    
+    public void testSimpleGene() {
+        String startCodon = "ATG";
+        String stopCodon = "TAA";
+        String dna = "ATTRTAA";
+        System.out.println("DNA strand is " + dna);
+        if (findSimpleGene(dna, startCodon, stopCodon) != null && !findSimpleGene(dna, startCodon, stopCodon).isEmpty()){
+            System.out.println("Gene is " + findSimpleGene(dna, startCodon, stopCodon));
+        } 
+        else {
+            System.out.println("OOPS");
+        }
+        
+
+        dna = "ATTTTTTT";
+        System.out.println("DNA strand is " + dna);
+        //gene = findSimpleGene(dna);
+        //System.out.println("Gene is " + gene);
+        if (findSimpleGene(dna, startCodon, stopCodon) != null && !findSimpleGene(dna, startCodon, stopCodon).isEmpty()){
+            System.out.println("Gene is " + findSimpleGene(dna, startCodon, stopCodon));
+        } 
+        else {
+            System.out.println("OOPS");
+        }
+        
+        //dna = "ATCCTATGCTTCGGCTGCTCTAATATGGT";
+        //dna = "ATCCTATGCTTCGGCTGCTCTOATATGGT";
+        dna = "ATGABCTAA";
+        System.out.println("DNA strand is " + dna);
+        //gene = findSimpleGene(dna);
+        //System.out.println("Gene is " + gene);
+        if (findSimpleGene(dna, startCodon, stopCodon) != null && !findSimpleGene(dna, startCodon, stopCodon).isEmpty()){
+            System.out.println("Gene is " + findSimpleGene(dna, startCodon, stopCodon));
+        } 
+        else {
+            System.out.println("OOPS");
+        }
+        
+        dna = "ATGRRTAAATGBBBTAA";
+        //dna = "ATRTAA";
+        System.out.println("DNA strand is " + dna);
+        //gene = findSimpleGene(dna);
+        //System.out.println("Gene is " + gene);
+        if (findSimpleGene(dna, startCodon, stopCodon) != null && !findSimpleGene(dna, startCodon, stopCodon).isEmpty()){
+            System.out.println("Gene is " + findSimpleGene(dna, startCodon, stopCodon));
+        } 
+        else {
+            System.out.println("OOPS");
+        }
+                
+        }
+        
+        public static void main (String[] args) {
+        Part1 gene = new Part1();
+        gene.testSimpleGene();
+    }
+
+}
+
