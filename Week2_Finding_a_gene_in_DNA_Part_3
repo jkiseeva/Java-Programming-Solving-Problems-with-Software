@@ -1,0 +1,82 @@
+
+/**
+ * Write a description of Part3 here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+public class Part3 {
+    
+     public String twoOccurrences (String a, String b){
+     
+         int count = 0;
+         int lastIndex = 0;
+
+         while(lastIndex != -1){
+            
+                lastIndex = b.indexOf(a,lastIndex);
+            
+                if(lastIndex != -1){
+                    count ++;
+                    lastIndex += a.length();
+                }
+            }
+            //System.out.println(count);
+         
+         if (b.contains(a)) {
+             
+             return b+" contains "+a+" and "+a+" occurs "+ count+" times";//b.indexOf(a);
+            
+            } else {return "false";
+            }
+         
+         }
+     
+     public String lastPart (String stringa, String stringb){
+        
+         int first = stringb.indexOf(stringa);
+         if (first != -1) {
+             String result = stringb.substring(first + stringa.length());
+             return result;
+            }
+            
+            return stringb;
+        
+        }    
+         
+         
+     public void testing(){
+         
+         
+         String one = "banana";
+         String two = "a";
+         
+         String three = "meredith";
+         String four = "red";
+         
+         String five = "hahahahohoho";
+         String six = "ho";
+         
+         String seven = "gta";
+         String eight = "atttaggtatagt";
+         
+         
+         String nine = "an";
+         String ten = "banona";
+         
+        
+         System.out.println("Response "+ twoOccurrences(two, one));
+         System.out.println("Response "+ twoOccurrences(four, three));
+         System.out.println("Response "+ twoOccurrences(six, five));
+         
+         System.out.println(lastPart(seven, eight));
+         System.out.println(lastPart(nine, ten));
+
+                 
+        }
+     
+        public static void main(String[] args) {
+        Part3 test = new Part3();
+        test.testing();
+    }
+}
